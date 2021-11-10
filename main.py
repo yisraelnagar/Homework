@@ -2,12 +2,12 @@ from http.server import HTTPServer, BaseHTTPRequestHandler
 
 
 class HelloHandler(BaseHTTPRequestHandler):
-    def do_Get(self):
+    def do_GET(self):
         self.send_response(200)
         self.send_header('content-type', 'text/html')
         self.end_headers()
-        self.wfile.write('Hello World!'.encode())
-
+        output_file = open('html_file', 'r')
+        self.wfile.write(output_file.read().encode())
 
 def main():
     PORT = 8000
