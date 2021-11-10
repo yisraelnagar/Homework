@@ -9,6 +9,7 @@ class HelloHandler(BaseHTTPRequestHandler):
         output_file = open('html_file', 'r')
         self.wfile.write(output_file.read().encode())
 
+
 def main():
     PORT = 8000
     server = HTTPServer(('', PORT), HelloHandler)
