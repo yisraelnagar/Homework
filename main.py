@@ -1,7 +1,9 @@
 from http.server import HTTPServer, BaseHTTPRequestHandler
 
+PORT = 8000
 
-class HelloHandler(BaseHTTPRequestHandler):
+
+class HelloWorldHandler(BaseHTTPRequestHandler):
     def do_GET(self):
         self.send_response(200)
         self.send_header('content-type', 'text/html')
@@ -10,12 +12,11 @@ class HelloHandler(BaseHTTPRequestHandler):
         self.wfile.write(output_file.read().encode())
 
 
-def main():
-    PORT = 8000
-    server = HTTPServer(('', PORT), HelloHandler)
-    print('Server Running On Port')
+def run_server():
+    server = HTTPServer(('localhost', PORT), HelloWorldHandler)
+    print('Server Running On Port ' + str(PORT))
     server.serve_forever()
 
 
 if __name__ == '__main__':
-    main()
+    run_server()
